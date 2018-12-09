@@ -1,0 +1,127 @@
+<div *ngIf="!_user.isLogged" class="container items-container">
+  <mat-tab-group mat-align-tabs="center" class="tabs">
+    <mat-tab label="Login">
+      <form [formGroup]="formGroupLogin" (ngSubmit)="SignIn()">
+        <div class="items">
+          <mat-form-field>
+            <input matInput formControlName="Email" placeholder="Email" type="email">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput formControlName="Password" placeholder="Password" type="password">
+          </mat-form-field>
+          <div class="buttons">
+            <button class="btn btn-outline-primary" [disabled]="!formGroupLogin.valid">Sign in</button>
+          </div>
+        </div>
+      </form>
+    </mat-tab>
+    <mat-tab label="Register">
+      <form [formGroup]="formGroupRegister" (ngSubmit)="SignUp()">
+        <div class="items">
+          <mat-form-field>
+            <input matInput formControlName="Email" placeholder="Email" type="email">
+            <!-- <mat-error *ngIf="formGroupRegister.get('Email').invalid">*Email is required</mat-error> -->
+          </mat-form-field>
+          <div *ngIf="formGroupRegister.get('Email').invalid && formGroupRegister.get('Email').touched">
+            <p>*Email is required</p>
+          </div>
+          <mat-form-field>
+            <input matInput formControlName="Password" placeholder="Password" type="password">
+          </mat-form-field>
+          <div *ngIf="formGroupRegister.get('Password').invalid && formGroupRegister.get('Password').touched">
+            <p>*Password is required</p>
+          </div>
+          <mat-form-field>
+            <input matInput formControlName="FirstName" placeholder="First name">
+          </mat-form-field>
+          <div *ngIf="formGroupRegister.get('FirstName').invalid && formGroupRegister.get('FirstName').touched">
+            <p>*First name is required</p>
+          </div>
+          <mat-form-field>
+            <input matInput formControlName="LastName" placeholder="Last name">
+          </mat-form-field>
+          <div *ngIf="formGroupRegister.get('LastName').invalid && formGroupRegister.get('LastName').touched">
+            <p>*Last name is required</p>
+          </div>
+          <mat-form-field>
+            <input matInput formControlName="Birthday" placeholder="Birthday">
+          </mat-form-field>
+          <div *ngIf="formGroupRegister.get('Birthday').invalid && formGroupRegister.get('Birthday').touched">
+            <p>*Birthday require this format (xx/xx/xxxx)</p>
+          </div>
+          <mat-form-field>
+            <mat-select formControlName="Gender" placeholder="Gender">
+              <mat-option value="1">Male</mat-option>
+              <mat-option value="2">Female</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput formControlName="Age" placeholder="Age" type="number">
+          </mat-form-field>
+          <div *ngIf="formGroupRegister.get('Age').invalid && formGroupRegister.get('Age').touched">
+            <p>*Age only accept numbers and must be higher than 0</p>
+          </div>
+          <div class="input-group">
+            <mat-form-field class="metric-data">
+              <input matInput formControlName="Height" placeholder="Height" type="number">
+            </mat-form-field>
+            <mat-select class="metric" [(value)]="heightM" placeholder="Metric system">
+              <mat-option value="1">mts</mat-option>
+            </mat-select>
+          </div>
+          <div *ngIf="formGroupRegister.get('Height').invalid && formGroupRegister.get('Height').touched">
+            <p>*Height require this format (x.xx or x)</p>
+          </div>
+          <div class="input-group">
+            <mat-form-field class="metric-data">
+              <input matInput formControlName="Weight" placeholder="Weight" type="number">
+            </mat-form-field>
+            <mat-select class="metric" [(value)]="weightM" placeholder="Metric system">
+              <mat-option value="1">kg</mat-option>
+            </mat-select>
+          </div>
+          <div *ngIf="formGroupRegister.get('Weight').invalid && formGroupRegister.get('Weight').touched">
+            <p>*Weight require this format (x.xx or x)</p>
+          </div>
+          <mat-form-field>
+            <input matInput formControlName="Phone" placeholder="Phone number">
+          </mat-form-field>
+          <div *ngIf="formGroupRegister.get('Phone').invalid && formGroupRegister.get('Phone').touched">
+            <p>*Weight require this format "(xxx)-xxx-xxxx"</p>
+          </div>
+          <a>Address (street, number exterior and interior)</a>
+          <div class="input-group">
+            <mat-form-field class="address">
+              <input matInput formControlName="Street" placeholder="Street" type="text">
+            </mat-form-field>
+            <mat-form-field class="address-number">
+              <input matInput formControlName="Exterior" type="number" placeholder="#">
+            </mat-form-field>
+            <mat-form-field class="address-number">
+              <input matInput formControlName="Interior" type="number" placeholder="#">
+            </mat-form-field>
+          </div>
+          <div *ngIf="( formGroupRegister.get('Exterior').invalid && formGroupRegister.get('Exterior').touched ) ||
+                      ( formGroupRegister.get('Interior').invalid && formGroupRegister.get('Interior').touched )">
+            <p>*# Exterior and interior only accept numbers</p>
+          </div>
+          <mat-form-field>
+            <input matInput formControlName="ZipCode" placeholder="Zip Code" type="text">
+          </mat-form-field>
+          <div *ngIf="formGroupRegister.get('ZipCode').invalid && formGroupRegister.get('ZipCode').touched">
+            <p>*Zip Code require this format (xxxxx)</p>
+          </div>
+          <mat-form-field>
+            <input matInput formControlName="Country" placeholder="Country" type="text">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput formControlName="State" placeholder="State" type="text">
+          </mat-form-field>
+          <div class="buttons">
+            <button class="btn btn-outline-primary" [disabled]="!formGroupRegister.valid">Sign up</button>
+          </div>
+        </div>
+      </form>
+    </mat-tab>
+  </mat-tab-group>
+</div>

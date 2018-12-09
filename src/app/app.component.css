@@ -1,0 +1,26 @@
+.name{
+    color: white;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin-top: 100px;
+  }
+
+  .items-container > * {
+    align-items: center;
+  }
+
+.title{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
